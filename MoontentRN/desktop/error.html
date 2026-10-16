@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- ============================================================================
+  月幕桌面端 —— 页面加载失败错误页（由 main.js 的 loadErrorPage 加载）
+  ----------------------------------------------------------------------------
+  - 入参（loadFile query 注入）：target = 加载失败的目标地址；
+    reason = 失败原因（如 "ERR_CONNECTION_REFUSED"）；
+  - 「重试」按钮把顶层导航指回 target（后端恢复后即可回到应用页面；
+    若仍失败，did-fail-load 会再次回到本页）；
+  - 视觉与窗口 backgroundColor(#0f0f0f) 同底，中文文案，零外部依赖
+    （静态资源随 asar 分发，离线可用）。文案一律 textContent 注入，不拼
+    HTML，target/reason 不可信内容不会被执行。
+============================================================================ -->
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'" />
+  <title>月幕 · 页面加载失败</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0f0f0f;
+      color: #e5e5e5;
+      font: 14px/1.7 -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    main { max-width: 520px; padding: 40px 32px; text-align: center; }
+    .icon { font-size: 44px; line-height: 1; margin-bottom: 18px; }
+    h1 { font-size: 20px; font-weight: 600; margin-bottom: 14px; color: #fff; }
+    .reason {
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 12px; color: #ff6b6b; word-break: break-all; margin-bottom: 10px;
+    }
+    .hint { color: #a3a3a3; margin-bottom: 26px; text-align: left; }
+    #retry {
+      background: #ffffff; color: #0f0f0f; border: 0; border-radius: 8px;
+      padding: 10px 44px; font-size: 14px; font-weight: 600; cursor: pointer;
+    }
+    #retry:hover { background: #d9d9d9; }
+    #retry:active { background: #c4c4c4; }
+    .target-label {
+      margin-top: 30px; font-size: 12px; color: #737373; text-align: left;
+    }
+    .target {
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 12px; color: #737373; word-break: break-all; text-align: left;
+      -webkit-user-select: text; user-select: text;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="icon" aria-hidden="true">⚠</div>
+    <h1>页面加载失败</h1>
+    <p class="reason" id="reason"></p>
+    <p class="hint">内嵌后端服务未就绪或已退出。通常重试即可恢复；若持续失败，
+    请重启月幕，或重新构建安装包（node MoontentRN/cli.js build macos）。</p>
+    <button id="retry" type="button">重试</button>
+    <p class="target-label">目标地址</p>
+    <p class="target" id="target"></p>
+  </main>
+  <script>
+    (function () {
+      'use strict';
+      var params = new URLSearchParams(location.search);
+      document.getElementById('reason').textContent = params.get('reason') || '未知原因';
+      document.getElementById('target').textContent = params.get('target') || '（无）';
+      document.getElementById('retry').addEventListener('click', function () {
+        var target = params.get('target');
+        if (target && /^https?:\/\//.test(target)) location.href = target;
+      });
+    })();
+  </script>
+</body>
+</html>

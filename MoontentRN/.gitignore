@@ -1,0 +1,34 @@
+# 依赖
+node_modules/
+
+# Expo 构建产物与本地缓存
+.expo/
+dist/
+web-build/
+
+# 环境变量（仅保留 .env.example 模板）
+.env
+.env.*
+!.env.example
+
+# CMS 资源站清单缓存
+.cms-sources.json
+
+# 证书与部署凭据
+certs/
+
+# 日志
+*.log
+
+# 系统杂项
+.DS_Store
+Thumbs.db
+
+# Electron 桌面工程依赖（cli.js 打包桌面端时自动安装，不入库）
+desktop/node_modules/
+
+# cli.js 统一构建产物根（web/android/win/macos/ios；app 侧 dist 仍由 app/.gitignore 管）
+/dist/
+
+# deploy 临时发布包目录
+.deploy-stage/

@@ -1,0 +1,30 @@
+{
+  "//": "Telegram 引擎（2026-10 TDLib 全量替换）：teleproto 1.230.0（纯 JS MTProto，GramJS 活跃继任 fork）为唯一实现——登录/对话/消息/写侧/更新/媒体全走单客户端，会话 server/.telegram-session.json；qrcode 服务端渲染扫码登录 PNG。无原生平台依赖（koffi/prebuilt-tdlib 已随 TDLib 路径删除）。",
+  "name": "moontent-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "月幕 MoontentRN 后端服务（Koa）",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "boot-check": "node scripts/boot-check.mjs",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "dependencies": {
+    "@koa/cors": "^5.0.0",
+    "@koa/router": "^13.1.0",
+    "dotenv": "^16.4.5",
+    "ioredis": "^6.0.0",
+    "koa": "^2.15.3",
+    "koa-bodyparser": "^4.4.1",
+    "koa-compress": "^5.2.2",
+    "koa-static": "^5.0.0",
+    "mysql2": "^3.24.5",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.34.4",
+    "teleproto": "1.230.0"
+  }
+}

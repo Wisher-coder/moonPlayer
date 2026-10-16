@@ -1,0 +1,50 @@
+moonPlayer 源代码使用许可
+Source Code License
+
+Copyright (c) 2026 Wisher-coder. 保留所有权利（All rights reserved）.
+
+一、许可授予
+
+  在严格遵守本许可全部条款的前提下，作者授予您一项有限的、可撤销的、
+  非独占的许可：仅为个人学习、调试与研究目的，访问、复制并在本地运行
+  本仓库（moonPlayer）的源代码。
+
+二、限制（重要）
+
+  1. 禁止商业使用：不得将本仓库源代码及其任何部分、衍生作品用于任何
+     商业目的，包括但不限于直接售卖、付费服务、商业部署、广告变现。
+  2. 禁止再分发与再公开：未经作者事先书面许可，不得以任何形式再分发、
+     转载、镜像、公开传播或二次发布本仓库源代码及其衍生作品，包括但不
+     限于上传至任何代码托管平台、打包分发、集成进其他对外发布的作品。
+     Fork 本仓库仅限在您自己的 GitHub 账号下留作个人学习用途，同样不得
+     对外再分发。
+  3. 禁止移除或遮蔽本许可声明、作者署名及仓库内的版权与免责声明。
+
+三、违反与终止
+
+  您一旦违反本许可的任何条款，本许可及其项下的一切授权立即自动终止。
+  作者保留以任何合法方式追究责任的权利。
+
+四、免责声明
+
+  本仓库源代码按「现状」提供，不附带任何明示或默示的担保，包括但不限于
+  适销性、特定用途适用性及不侵权的担保。在任何情况下，作者均不对因使用
+  或无法使用本仓库源代码而产生的任何索赔、损害或其他责任负责。
+
+五、其他
+
+  未 经作者书面许可，不得将本仓库用于本许可未明确授权的任何用途。
+  本许可的完整解释权归作者所有。如需商业授权或其他合作，请联系作者。
+
+--------------------------------------------------------------------------
+
+English Summary (for reference only; the Chinese terms above prevail)
+
+  Copyright (c) 2026 Wisher-coder. All rights reserved.
+
+  This repository is made available for PERSONAL, NON-COMMERCIAL study,
+  debugging and research only. You may NOT use it or derivatives for any
+  commercial purpose, and you may NOT redistribute, repost, mirror or
+  republish the source code or derivatives without prior written
+  permission from the author. The code is provided "AS IS", WITHOUT
+  WARRANTY OF ANY KIND. Any breach terminates this license automatically.

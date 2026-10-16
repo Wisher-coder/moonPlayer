@@ -1,0 +1,87 @@
+/* ============================================================================
+   global.css —— NativeWind v4 全局样式入口（metro 经 withNativeWind 编译）
+   ----------------------------------------------------------------------------
+   - 三条 @tailwind 指令为 NativeWind 官方接入形态，勿改；
+   - 主题 CSS 变量：浅色放 :root、深色放 .dark。这是 web 端（react-native-web）
+     的兜底与首屏底色来源；native 端的运行时换肤由 ThemeProvider 根部 vars()
+     注入同名变量（src/lib/theme-context.jsx），取值与此处一一对应；
+   - 变量值与 src/theme/tokens.js 必须保持一致（同名同值），改动需两处同步。
+
+   语义 token 分工（对齐 NextWeb globals.css）：
+   - accent 恒为品牌红 #f00（logo/进度/在播标记等「品牌/进度」位，深浅同值）；
+   - link 是交互蓝（链接/高亮），浅色取深档 #065fd4、深色取浅档 #3ea6ff；
+   - surface / surface-2 为面板与抬升面（YouTube 深底 #0f0f0f 浅底 #fff 体系），
+     全站无描边扁平形态。
+   ============================================================================ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* —— 浅色（默认）—— */
+:root {
+  --background: #ffffff;      /* 页面底 */
+  --surface: #f9f9f9;         /* 卡片/面板 */
+  --surface-2: #f2f2f2;       /* 悬浮/抬升面/chip 组底 */
+  --line: #e5e5e5;            /* 分隔线 */
+  --foreground: #0f0f0f;      /* 主文字 */
+  --muted: #606060;           /* 次级文字 */
+  --accent: #ff0000;          /* 品牌红 */
+  --accent-strong: #cc0000;   /* 品牌红按下档（浅色下取深红） */
+  --link: #065fd4;            /* 交互蓝（深档） */
+}
+
+/* —— 深色（.dark；native 端由 vars() 等价注入）—— */
+.dark {
+  --background: #0f0f0f;
+  --surface: #212121;
+  --surface-2: #272727;
+  --line: #303030;
+  --foreground: #f1f1f1;
+  --muted: #aaaaaa;
+  --accent: #ff0000;
+  --accent-strong: #ff3333;   /* 暗底上取提亮红 */
+  --link: #3ea6ff;            /* 交互蓝（浅档） */
+}
+
+/* web 基底：全高画布 + 页面底色（React 挂载前也有正确底色，深色主题不闪白） */
+@layer base {
+  html,
+  body,
+  #expo-root {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    background-color: var(--background);
+  }
+}
+
+/* —— web 滚动条主题化（native 不经过 CSS，天然无此问题）——
+   语义：轨道透明、拇指用分隔线档（--line），悬停提亮到次级文字档（--muted）；
+   Firefox 走 scrollbar-width/scrollbar-color，Chromium 系走 ::-webkit-*。 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}

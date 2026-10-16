@@ -1,0 +1,2 @@
+# 远端部署脚本经 ssh bash -s 在 Linux 上执行，必须保持 LF 行尾
+*.sh text eol=lf

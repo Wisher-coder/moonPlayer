@@ -1,0 +1,16 @@
+diff --git a/node_modules/react-native-css-interop/dist/runtime/native/native-interop.js b/node_modules/react-native-css-interop/dist/runtime/native/native-interop.js
+index 254b7ba..9bfc49f 100644
+--- a/node_modules/react-native-css-interop/dist/runtime/native/native-interop.js
++++ b/node_modules/react-native-css-interop/dist/runtime/native/native-interop.js
+@@ -230,7 +230,10 @@ function getDeclarations(previousState, refs, action) {
+             collectRules(state, refs, ruleSet, importantRules, "i");
+         }
+     }
+-    if (config.inlineProp && refs.props?.[config.inlineProp]) {
++    // nativewind#1834: RN 0.86 起 LogBox 按钮等组件使用函数式 style 的 Pressable，
++    // 函数值不能当样式对象收集（否则组件样式全部丢失）；跳过收集、原样透传。
++    if (config.inlineProp && refs.props?.[config.inlineProp] &&
++        typeof refs.props[config.inlineProp] !== "function") {
+         collectInlineRules(state, refs, refs.props[config.inlineProp], state.declarationTracking.effect, normalRules, importantRules);
+     }
+     state.normal = normalRules

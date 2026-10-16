@@ -1,0 +1,52 @@
+# 依赖
+node_modules/
+bower_components/
+
+# ZCode 本地会话/工具状态
+.zcode/
+.zcodeignore
+
+# 本地临时分析产物
+.tmpx/
+
+# 日志与部署临时产物
+*.log
+.deploy-stage/
+
+# 系统杂项
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Windows 保留名误生成文件
+nul
+
+# 根目录本地调试截图（不入库，正式测试证据在 gui-test-screenshots/）
+/shot-home.png
+/v-home.jpg
+
+# Telegram 会话（等同账号凭据，不入库）
+MoontentRN/server/.telegram-session.json
+Nodejs/.telegram-session.json
+
+# Telegram Web K 参考源码（本地临时资料，不入库）
+tmpTelegram/
+
+# 部署凭据（含服务器 SSH 口令，从 deploy.config.example.json 复制后勿提交）
+MoontentRN/deploy.config.json
+
+# 内部工作痕迹 / 取证产物，不入库
+.fixtmp/
+.workbuddy/
+gui-test-screenshots/
+Nodejs/.work/
+Nodejs/*.m3u8
+
+# 签名与证书材料防线
+*.jks
+*.keystore
+*.p8
+*.p12
+*.mobileprovision
+*.pem
+*.cer

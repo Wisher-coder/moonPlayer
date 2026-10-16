@@ -1,0 +1,19 @@
+{
+  "name": "moontent-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "月幕 MoontentRN 桌面端（Electron 壳：内嵌 Koa 后端 + 托管 Expo Web 静态产物）",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "selftest": "electron . --selftest",
+    "build:win": "electron-builder --win nsis portable",
+    "build:mac": "electron-builder --mac dmg"
+  },
+  "devDependencies": {
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3"
+  }
+}
